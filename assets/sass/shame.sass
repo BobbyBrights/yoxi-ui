@@ -1,0 +1,61 @@
+html,body 
+	background-color: $site-bg
+	font-size: 16px
+	+from(1600px)
+		font-size: $base-font-size
+
+=rectangle($size: 378px) 
+	width: $size
+	height: $size
+	display: block
+
+.rectangle
+	+rectangle
+	background-color: $color-primary
+	z-index: -1
+	position: absolute
+
+.site-header 
+	z-index: 99999
+
+	.site-logo 
+		width: 100px
+
+.site-header-container
+	height: 300px
+
+.has-margin-bottom-xl
+	margin-bottom: 18rem
+
+h2 
+	font-size: 3.75em
+	line-height: 1.2
+	z-index: 1
+	position: relative
+
+.what-is-yoxi 
+	p
+		margin-left: 14rem
+
+	.rectangle 
+		+rectangle()
+		bottom: -7rem
+		left: -12rem
+
+.who-is-yoxi 
+	.rectangle 
+		+rectangle(236px)
+		bottom: 2rem
+		right: -7rem
+
+.how-has-yoxi-evolved 
+	.rectangle 
+		+rectangle()
+		bottom: -4.5rem
+		left: -10.875rem
+
+.how-has-yoxi-evolved 
+	.rectangle 
+		+rectangle()
+		bottom: -4.5rem
+		left: -10.875rem
