@@ -1,0 +1,36 @@
+$indent: 3rem
+
+.timeline-date
+	flex: 0
+
+.timeline-events
+	border-left: 2px solid $color-primary
+	margin: 0
+	padding-bottom: 5rem
+
+.timeline-section:last-of-type 
+	.timeline-events
+		padding-bottom: 0
+
+.timeline-event
+	margin: 0 0 0 $indent
+	padding: .25rem 0
+	display: flex
+	align-items: center
+	position: relative
+
+	&.level
+		color: $color-primary
+		font-weight: bold
+		font-weight: 700
+		font-size: 1.25em
+
+	&:before
+		content: ""
+		display: block
+		height: 1rem
+		width: 1rem
+		border-radius: 50%
+		background-color: $color-primary
+		position: absolute
+		left: -($indent + .55rem)

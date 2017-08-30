@@ -1,0 +1,21 @@
+{
+  "name": "jcd-jekyll-base",
+  "description": "",
+  "main": "index.js",
+  "authors": [
+    "jakecooperdesign <jakecooperdesign@gmail.com>"
+  ],
+  "license": "ISC",
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "assets/vendor/bower_components/components/",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "smooth-scroll": "cferdinandi/smooth-scroll#^12.1.4"
+  }
+}

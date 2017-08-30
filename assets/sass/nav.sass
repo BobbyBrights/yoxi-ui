@@ -1,0 +1,32 @@
+.site-nav
+	text-align: right
+	
+	.nav-toggle
+		background-color: $color-primary
+		color: white
+		text-align: center
+		padding: .25rem
+		display: inline-block
+		width: 2.25rem
+
+	.nav-links
+		text-align: center
+		transition: all $base-speed $base-easing
+		max-height: 0
+		overflow: hidden
+		opacity: 0
+		// display: none
+
+	&.open .nav-links
+		max-height: 100%
+		opacity: 1
+
+	.nav-item
+		display: block
+		padding: 2rem
+		background-color: $color-primary
+		color: white
+
+		&:hover
+			background-color: white
+			color: $color-primary

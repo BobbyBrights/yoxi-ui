@@ -9,6 +9,15 @@ html,body
 	height: $size
 	display: block
 
+button
+	&:hover
+		cursor: pointer
+	&:focus
+		outline: none
+
+.is-relative
+	z-index: 0
+
 .rectangle
 	+rectangle
 	background-color: $color-primary
@@ -17,6 +26,7 @@ html,body
 
 .site-header 
 	z-index: 99999
+	width: 100%
 
 	.site-logo 
 		width: 100px
@@ -32,6 +42,21 @@ h2
 	line-height: 1.2
 	z-index: 1
 	position: relative
+
+button, 
+html input[type="button"], 
+input[type="reset"], 
+input[type="submit"]
+	background-color: $color-primary
+	color: white
+	font-weight: bold
+	font-weight: 700
+	border: none
+	+transition-all
+
+	&:hover
+		background-color: white
+		color: $color-primary
 
 .what-is-yoxi 
 	p
@@ -49,6 +74,8 @@ h2
 		right: -7rem
 
 .how-has-yoxi-evolved 
+	h2
+		margin-bottom: 7rem
 	.rectangle 
 		+rectangle()
 		bottom: -4.5rem
@@ -59,3 +86,26 @@ h2
 		+rectangle()
 		bottom: -4.5rem
 		left: -10.875rem
+
+.get-in-touch
+	form
+		position: relative
+	input
+		margin: 2rem 0
+		padding: 2rem
+	header
+		margin-bottom: 5rem
+	.rectangle
+		top: -2rem
+		left: -4rem
+
+.site-footer
+	nav a + a
+		margin-left: 1rem
+
+	.fa
+		padding: .5rem
+		border-radius: 50%
+		width: 2rem
+		margin-right: .25rem
+		background-color: rgba(0,0,0,0.1)
