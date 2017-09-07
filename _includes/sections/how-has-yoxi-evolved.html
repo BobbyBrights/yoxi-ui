@@ -1,0 +1,34 @@
+<section id="how-has-yoxi-evolved" class="how-has-yoxi-evolved has-margin-bottom-xl">
+	<div class="container">
+
+		<div class="columns">
+			<header class="column is-offset-3 is-7 has-padding-bottom-large">
+				<h2 class="is-relative">
+					<span class="rectangle"></span>
+					How has Yoxi evolved and what efforts has it supported?
+				</h2>
+				<p>We invest in journeys of the unknown, support explorers with a commitment to pursue truth and beauty, and conduct experiments of our own. We believe learning is the most valuable ROI - and we are open and honest about our findings. Dig in below!</p>
+			</header>
+		</div>
+
+		<div class="columns">
+			<div class="column is-offset-2 is-8 has-padding-bottom">
+
+				{% for group in site.data.timeline %}
+				<section class="columns timeline-section">
+					<h3 class="timeline-date is-fs-2 column is-marginless">{{group.year}}</h3>
+					<div class="column">
+						<ul class="timeline-events is-unstyled">
+							{% for event in group.items %}
+								<li class="timeline-event level-{{event.level}}">{{event.title}}</li>
+							{% endfor %}
+						</ul>
+					</div>
+				</section>
+				{% endfor %}
+
+			</div>
+		</div>
+
+	</div>
+</section>

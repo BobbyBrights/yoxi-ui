@@ -15,22 +15,27 @@ $indent: 3rem
 .timeline-event
 	margin: 0 0 0 $indent
 	padding: .25rem 0
-	display: flex
-	align-items: center
 	position: relative
+	&:before
+		content: ""
+		+absolute-middle
+		left: -($indent + .55rem)
+		+rectangle(1rem)
+		border-radius: 50%
 
-	&.level
-		color: $color-primary
+	&.level-primary,
+	&.level-secondary
 		font-weight: bold
 		font-weight: 700
 		font-size: 1.25em
 
-	&:before
-		content: ""
-		display: block
-		height: 1rem
-		width: 1rem
-		border-radius: 50%
-		background-color: $color-primary
-		position: absolute
-		left: -($indent + .55rem)
+	&.level-primary
+		color: $color-primary
+		&:before
+			background-color: $color-primary
+
+
+	&.level-secondary
+		color: white
+		&:before
+			background-color: white

@@ -3,12 +3,7 @@ html,body
 	font-size: 16px
 	+from(1600px)
 		font-size: $base-font-size
-
-=rectangle($size: 378px) 
-	width: $size
-	height: $size
-	display: block
-
+		
 button
 	&:hover
 		cursor: pointer
@@ -58,47 +53,6 @@ input[type="submit"]
 		background-color: white
 		color: $color-primary
 
-.what-is-yoxi 
-	p
-		margin-left: 14rem
-
-	.rectangle 
-		+rectangle()
-		bottom: -7rem
-		left: -12rem
-
-.who-is-yoxi 
-	.rectangle 
-		+rectangle(236px)
-		bottom: 2rem
-		right: -7rem
-
-.how-has-yoxi-evolved 
-	h2
-		margin-bottom: 7rem
-	.rectangle 
-		+rectangle()
-		bottom: -4.5rem
-		left: -10.875rem
-
-.how-has-yoxi-evolved 
-	.rectangle 
-		+rectangle()
-		bottom: -4.5rem
-		left: -10.875rem
-
-.get-in-touch
-	form
-		position: relative
-	input
-		margin: 2rem 0
-		padding: 2rem
-	header
-		margin-bottom: 5rem
-	.rectangle
-		top: -2rem
-		left: -4rem
-
 .site-footer
 	nav a + a
 		margin-left: 1rem
@@ -109,3 +63,15 @@ input[type="submit"]
 		width: 2rem
 		margin-right: .25rem
 		background-color: rgba(0,0,0,0.1)
+
+a,
+button,
+input
+	&.btn-outline
+		border: 2px solid $color-primary
+		background-color: transparent
+		color: $color-primary
+
+		&:hover
+			background-color: $color-primary
+			color: white
