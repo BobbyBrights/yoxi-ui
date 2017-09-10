@@ -27,7 +27,7 @@ var scroll = new SmoothScroll('a[href*="#"]',{
 		$button.addEventListener('click', function(e) {
 			e.preventDefault();
 
-			$bio = findAncestor($button = e.target.parentNode, 'bio-body');
+			$bio = findAncestor($button = e.target.parentNode, 'bio');
 			$bio.classList.toggle('is-open');
 		});
 	});

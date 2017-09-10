@@ -4,20 +4,25 @@
 	position: relative
 
 .bio-image
-	padding-right: 1rem
-	padding-top: 8rem
+	+from($bp-md)
+		position: relative
+		top: 3rem
 
 .bio-quote
 	padding: 1.5rem 1.5rem 1rem
-	height: 14rem
 	display: flex
 	flex-direction: column
 	
 	.bio-quote-tail
 		position: absolute
 		width: 1rem
-		bottom: -1rem
-		fill: white
+		top: -1rem
+		transform: rotate(180deg)
+
+		+from($bp-md)
+			top: initial
+			bottom: -1rem
+			transform: none
 
 	@for $i from 1 through length($color-steps)
 		$color: nth($color-steps, $i)
@@ -55,7 +60,7 @@
 	&:hover svg
 		fill: white
 
-.bio-body.is-open 
+.bio.is-open 
 	.bio-text
 		max-height: 100%
 		margin-bottom: 4rem
