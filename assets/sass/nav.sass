@@ -8,6 +8,7 @@
 		padding: .25rem
 		display: inline-block
 		width: 2.25rem
+		pointer-events: all
 
 	.nav-links
 		text-align: center
@@ -15,7 +16,7 @@
 		max-height: 0
 		overflow: hidden
 		opacity: 0
-		// display: none
+
 
 	&.open .nav-links
 		max-height: 100%
@@ -26,6 +27,10 @@
 		padding: 2rem
 		background-color: $color-primary
 		color: white
+		
+		@for $i from 1 through length($color-steps)
+			&:nth-child(#{$i})
+				background-color: nth($color-steps, $i)
 
 		&:hover
 			background-color: white
