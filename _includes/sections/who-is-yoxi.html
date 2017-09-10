@@ -24,10 +24,19 @@
 						<div class="bio-body is-5">
 							<div class="bio-quote">
 								<p class="bio-question is-fs-2 is-marginless has-padding-right-large">{{person.question}}</p>
-								<p class="bio-cite is-strong is-marginless is-flex">
+								<p class="bio-cite is-strong is-marginless is-flex is-align-center">
 									<span class="is-flex-expand">{{person.name}}, {{person.title}}</span>
-									<span><button class="bio-toggle"><i class="fa fa-plus"></i></button></span>
+									<span class="is-block leading-0">
+										<button class="bio-toggle">
+											<svg class="is-block" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+												<path d="M30.69,15H17V1.31C17,.58,16.72,0,16,0s-1,.58-1,1.31V15H1.31C.58,15,0,15.28,0,16s.58,1,1.31,1H15V30.69c0,.72.28,1.31,1,1.31s1-.58,1-1.31V17H30.69c.72,0,1.31-.28,1.31-1S31.42,15,30.69,15Z"/>
+											</svg>
+										</button>
+									</span>
 								</p>
+								<svg class="bio-quote-tail" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+									<polygon points="0 0 0 31.65 31.64 0 0 0"/>
+								</svg>
 							</div>
 							<div class="bio-text">
 								{{person.bio | markdownify}}

@@ -12,10 +12,20 @@
 	height: 14rem
 	display: flex
 	flex-direction: column
+	
+	.bio-quote-tail
+		position: absolute
+		width: 1rem
+		bottom: -1rem
+		fill: white
 
 	@for $i from 1 through length($color-steps)
+		$color: nth($color-steps, $i)
 		.bio:nth-child(#{length($color-steps) - $i}) &
-			background-color: nth($color-steps, $i)
+			background-color: $color
+
+			.bio-quote-tail
+				fill: $color
 
 .bio-text
 	background-color: white
@@ -32,15 +42,18 @@
 	flex: 1
 
 .bio-text
-	// display: none
 	max-height: 0
 	overflow: hidden
 	opacity: 0
 	+transition-all
 
 .bio-toggle
-	&:hover 
-		color: white
+	svg
+		width: 1.125rem
+		fill: rgba(0,0,0,0.8)
+		+transition-all
+	&:hover svg
+		fill: white
 
 .bio-body.is-open 
 	.bio-text

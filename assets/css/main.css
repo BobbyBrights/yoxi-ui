@@ -6354,16 +6354,31 @@ button:focus {
   -webkit-flex-direction: column;
       -ms-flex-direction: column;
           flex-direction: column; }
+  .bio-quote .bio-quote-tail {
+    position: absolute;
+    width: 1rem;
+    bottom: -1rem;
+    fill: white; }
   .bio:nth-child(4) .bio-quote {
     background-color: red; }
+    .bio:nth-child(4) .bio-quote .bio-quote-tail {
+      fill: red; }
   .bio:nth-child(3) .bio-quote {
     background-color: #F46F1A; }
+    .bio:nth-child(3) .bio-quote .bio-quote-tail {
+      fill: #F46F1A; }
   .bio:nth-child(2) .bio-quote {
     background-color: #F88912; }
+    .bio:nth-child(2) .bio-quote .bio-quote-tail {
+      fill: #F88912; }
   .bio:nth-child(1) .bio-quote {
     background-color: #FBA309; }
+    .bio:nth-child(1) .bio-quote .bio-quote-tail {
+      fill: #FBA309; }
   .bio:nth-child(0) .bio-quote {
     background-color: #FFBD00; }
+    .bio:nth-child(0) .bio-quote .bio-quote-tail {
+      fill: #FFBD00; }
 
 .bio-text {
   background-color: white;
@@ -6389,8 +6404,14 @@ button:focus {
   -webkit-transition: all 0.3s ease-in-out;
   transition: all 0.3s ease-in-out; }
 
-.bio-toggle:hover {
-  color: white; }
+.bio-toggle svg {
+  width: 1.125rem;
+  fill: rgba(0, 0, 0, 0.8);
+  -webkit-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out; }
+
+.bio-toggle:hover svg {
+  fill: white; }
 
 .bio-body.is-open .bio-text {
   max-height: 100%;
@@ -6506,6 +6527,9 @@ h2 {
 
 .is-relative {
   z-index: 0; }
+
+.leading-0 {
+  line-height: 1; }
 
 .click-through {
   pointer-events: none; }
