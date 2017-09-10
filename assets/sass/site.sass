@@ -1,0 +1,60 @@
+html,body 
+	background-color: $site-bg
+	font-size: 16px
+	+from(1600px)
+		font-size: $base-font-size
+
+h2 
+	font-size: 3.75em
+	line-height: 1.2
+	z-index: 1
+	position: relative
+
+.site-header 
+	z-index: 99999
+	width: 100%
+
+	.site-logo 
+		width: 100px
+
+.site-header-container
+	height: 300px
+
+.site-footer
+	nav a + a
+		margin-left: 1rem
+
+	.fa
+		padding: .5rem
+		border-radius: 50%
+		width: 2rem
+		margin-right: .25rem
+		background-color: rgba(0,0,0,0.1)
+
+// 
+// SECTIONS
+// 
+.what-is-yoxi 
+	p
+		margin-left: 14rem
+
+.explore-yoxi 
+	li
+		display: inline-block
+		width: 45%
+		margin-right: 1rem
+		margin-bottom: 1rem
+	li a
+		display: block
+		padding: 1rem
+	.fa
+		margin-right: 1rem
+
+.get-in-touch
+	form
+		position: relative
+	input
+		margin: 2rem 0
+		padding: 2rem
+	header
+		margin-bottom: 5rem

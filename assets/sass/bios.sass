@@ -1,0 +1,49 @@
+.bio-image,
+.bio-quote
+	z-index: 2
+	position: relative
+
+.bio-image
+	padding-right: 1rem
+	padding-top: 8rem
+
+.bio-quote
+	background-color: $color-primary
+	padding: 1.5rem 1.5rem 1rem
+	height: 14rem
+	display: flex
+	flex-direction: column
+
+.bio-text
+	background-color: white
+	color: black
+	position: relative
+	z-index: 1
+	padding: 1rem
+	outline: 4rem solid white
+
+.bio-question
+	font-weight: bold
+	font-size: 1.4em
+	line-height: 1.2
+	flex: 1
+
+.bio-text
+	// display: none
+	max-height: 0
+	overflow: hidden
+	opacity: 0
+	+transition-all
+
+.bio-toggle
+	&:hover 
+		color: white
+
+.bio-body.is-open 
+	.bio-text
+		max-height: 100%
+		margin-bottom: 4rem
+		opacity: 1
+
+	.bio-toggle
+		transform: rotate(45deg)

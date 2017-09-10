@@ -18,9 +18,12 @@ $indent: 3rem
 	position: relative
 	&:before
 		content: ""
-		+absolute-middle
-		left: -($indent + .55rem)
-		+rectangle(1rem)
+		height: 1rem
+		width: 1rem
+		position: absolute
+		top: 50%
+		left: -($indent + .6rem)
+		transform: translateY(-50%)
 		border-radius: 50%
 
 	&.level-primary,

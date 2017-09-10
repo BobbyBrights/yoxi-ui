@@ -1,82 +1,32 @@
-html,body 
-	background-color: $site-bg
-	font-size: 16px
-	+from(1600px)
-		font-size: $base-font-size
-		
-button
-	&:hover
-		cursor: pointer
-	&:focus
-		outline: none
-
 .is-relative
 	z-index: 0
 
 .rectangle
-	+rectangle
+	display: block
+	width: 378px
+	height: 378px
+	position: absolute
+	top: 50%
 	background-color: $color-primary
 	z-index: -1
-	position: absolute
 
-.site-header 
-	z-index: 99999
-	width: 100%
+	&.offset
+		top: 35%
 
-	.site-logo 
-		width: 100px
+	&.offset-large
+		top: 15%
 
-.site-header-container
-	height: 300px
+	&.small
+		width: 236px
+		height: 236px
+
+	&.left
+		left: 0
+		transform: translate(-50%, -50%)
+	&.right
+		right: 0
+		transform: translate(50%, -50%)
+
 
 .has-margin-bottom-xl
 	margin-bottom: 18rem
-
-h2 
-	font-size: 3.75em
-	line-height: 1.2
-	z-index: 1
-	position: relative
-
-.btn-primary
-	background-color: $color-primary
-	color: white
-
-	&:hover
-		background-color: white
-		color: $color-primary
-
-button, 
-html input[type="button"], 
-input[type="reset"], 
-input[type="submit"]
-	font-weight: bold
-	font-weight: 700
-	background-color: transparent
-	border: none
-	margin: 0
-	padding: 0
-	+transition-all
-
-.site-footer
-	nav a + a
-		margin-left: 1rem
-
-	.fa
-		padding: .5rem
-		border-radius: 50%
-		width: 2rem
-		margin-right: .25rem
-		background-color: rgba(0,0,0,0.1)
-
-a,
-button,
-input
-	&.btn-outline
-		border: 2px solid $color-primary
-		background-color: transparent
-		color: $color-primary
-
-		&:hover
-			background-color: $color-primary
-			color: white
