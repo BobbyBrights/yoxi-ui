@@ -3,18 +3,33 @@ var scroll = new SmoothScroll('a[href*="#"]',{
 });
 
 (function(){
-
-	function toggleClasses(e){
-		$nav = document.querySelector('.site-nav');
-		$nav.classList.toggle('open');
-		console.log('toggled');
-	};
-
-
-	document.querySelector('.nav-toggle').addEventListener('click', toggleClasses);
-
 	$links = document.querySelectorAll('.nav-item');
-	for (var i = 0; i < $links.length; i++) {
-		$links[i].addEventListener('click', toggleClasses);
+	$toggle = document.querySelector('.nav-toggle');
+
+	$links = [].slice.call($links);
+	$links.push( $toggle );
+
+	$links.forEach(function($link){
+		$link.addEventListener('click', function(e){
+			document.querySelector('.site-nav').classList.toggle('open');
+		});
+	});
+})();
+
+(function(){
+	function findAncestor($el, $class) {
+		while ( ($el = $el.parentElement) && !$el.classList.contains($class));
+		return $el;
 	}
+
+	$buttons = document.querySelectorAll('.bio-toggle');
+	$buttons.forEach(function($button){
+		$button.addEventListener('click', function(e) {
+			e.preventDefault();
+
+			$bio = findAncestor($button = e.target.parentNode, 'bio-body');
+			$bio.classList.toggle('is-open');
+		});
+	});
+
 })();

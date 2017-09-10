@@ -38,20 +38,25 @@ h2
 	z-index: 1
 	position: relative
 
-button, 
-html input[type="button"], 
-input[type="reset"], 
-input[type="submit"]
+.btn-primary
 	background-color: $color-primary
 	color: white
-	font-weight: bold
-	font-weight: 700
-	border: none
-	+transition-all
 
 	&:hover
 		background-color: white
 		color: $color-primary
+
+button, 
+html input[type="button"], 
+input[type="reset"], 
+input[type="submit"]
+	font-weight: bold
+	font-weight: 700
+	background-color: transparent
+	border: none
+	margin: 0
+	padding: 0
+	+transition-all
 
 .site-footer
 	nav a + a

@@ -1,12 +1,43 @@
 <section id="who-is-yoxi" class="who-is-yoxi has-margin-bottom-xl">
 	<div class="container">
 		<div class="columns">
-			<header class="column is-offset-3 is-7">
-				<h2 class="is-relative">
-					<span class="rectangle"></span>
-					Who is behind Yoxi and its mission?
-				</h2>
-			</header>
+			<div class="column is-offset-2 is-7">
+				<header>
+					<h2 class="is-relative">
+						<span class="rectangle"></span>
+						Who is behind Yoxi and its mission?
+					</h2>
+				</header>
+			</div>
+		</div>
+		<div class="columns">
+			<div class="column is-offset-1">
+				<div class="bios has-margin-top-large">
+
+					{% for person in site.data.bios %}
+					<article class="bio is-flex has-margin-bottom-large">
+
+						<figure class="bio-image is-2 is-marginless">
+							<img src="{{person.image}}" alt="">
+						</figure>
+
+						<div class="bio-body is-5">
+							<div class="bio-quote">
+								<p class="bio-question is-fs-2 is-marginless has-padding-right-large">{{person.question}}</p>
+								<p class="bio-cite is-strong is-marginless is-flex">
+									<span class="is-flex-expand">{{person.name}}, {{person.title}}</span>
+									<span><button class="bio-toggle"><i class="fa fa-plus"></i></button></span>
+								</p>
+							</div>
+							<div class="bio-text">
+								{{person.bio | markdownify}}
+							</div>
+						</div>
+
+					</article>
+					{% endfor %}
+				</div>
+			</div>
 		</div>
 	</div>
 </section>
