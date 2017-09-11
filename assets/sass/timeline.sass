@@ -1,15 +1,21 @@
 $indent: 3rem
 
+.timeline-section
+	+until($bp-md)
+		border-left: 2px solid $color-primary
+
 .timeline-date
 	flex: 0
+	+until($bp-md)
+		padding-left: $indent
 
 .timeline-events
-	border-left: 2px solid $color-primary
 	margin: 0
 	padding-bottom: 5rem
+	+from($bp-md)
+		border-left: 2px solid $color-primary
 
-.timeline-section:last-of-type 
-	.timeline-events
+	.timeline-section:last-of-type &
 		padding-bottom: 0
 
 .timeline-event
@@ -17,6 +23,7 @@ $indent: 3rem
 	margin: 0 0 0 $indent
 	padding: .25rem 0
 	position: relative
+
 	&:before
 		content: ""
 		height: $timeline-icon-size
