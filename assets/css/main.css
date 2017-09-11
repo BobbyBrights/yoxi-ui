@@ -7724,7 +7724,7 @@ button:focus {
     width: 1.5rem;
     position: absolute;
     top: 50%;
-    left: -2.85rem;
+    left: -2.8rem;
     -webkit-transform: translateY(-50%);
         -ms-transform: translateY(-50%);
             transform: translateY(-50%); }
