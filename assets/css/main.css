@@ -7778,10 +7778,12 @@ h2 {
   background-color: rgba(0, 0, 0, 0.1); }
 
 .explore-yoxi li {
-  display: inline-block;
-  width: 45%;
   margin-right: 1rem;
   margin-bottom: 1rem; }
+  @media screen and (min-width: 960px) {
+    .explore-yoxi li {
+      display: inline-block;
+      width: 45%; } }
 
 .explore-yoxi li a {
   display: block;
