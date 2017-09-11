@@ -7685,18 +7685,24 @@ button:focus {
       -ms-transform: rotate(45deg);
           transform: rotate(45deg); }
 
-@media screen and (max-width: 719px) {
-  .timeline-section {
-    border-left: 2px solid red; } }
-
-.timeline-date {
-  -webkit-box-flex: 0;
-  -webkit-flex: 0;
-      -ms-flex: 0;
-          flex: 0; }
+.timeline-section {
+  position: relative; }
   @media screen and (max-width: 719px) {
-    .timeline-date {
-      padding-left: 3rem; } }
+    .timeline-section {
+      border-left: 2px solid red; } }
+  @media screen and (min-width: 720px) {
+    .timeline-section {
+      margin-left: 8rem; } }
+
+@media screen and (max-width: 719px) {
+  .timeline-date {
+    padding-left: 2rem; } }
+
+@media screen and (min-width: 720px) {
+  .timeline-date {
+    margin-left: 0;
+    position: absolute;
+    left: -8rem; } }
 
 .timeline-events {
   margin: 0;
@@ -7708,7 +7714,8 @@ button:focus {
     padding-bottom: 0; }
 
 .timeline-event {
-  margin: 0 0 0 3rem;
+  margin: 0;
+  margin-left: 2rem;
   padding: .25rem 0;
   position: relative; }
   .timeline-event:before {
@@ -7717,7 +7724,7 @@ button:focus {
     width: 1.5rem;
     position: absolute;
     top: 50%;
-    left: -3.85rem;
+    left: -2.85rem;
     -webkit-transform: translateY(-50%);
         -ms-transform: translateY(-50%);
             transform: translateY(-50%); }
