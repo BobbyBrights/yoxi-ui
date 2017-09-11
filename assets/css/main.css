@@ -7607,9 +7607,6 @@ button:focus {
   @media screen and (min-width: 720px) {
     .bio-quote {
       width: 60%; } }
-  @media screen and (min-width: 1200px) {
-    .bio-quote {
-      width: 50%; } }
   .bio-quote .bio-quote-tail {
     position: absolute;
     width: 1rem;
