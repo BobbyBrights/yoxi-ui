@@ -1,16 +1,6 @@
-.columns
-	margin-left: 0
-	margin-right: 0
-	display: block
-	
-	+from($bp-md)
-		margin-left: -1 * $grid-gutter
-		margin-right: -1 * $grid-gutter
-		flex-wrap: wrap
-		display: flex
-
 .align-items-end
 	align-items: flex-end
+
 .is-relative
 	z-index: 0
 
@@ -21,6 +11,9 @@
 	pointer-events: none
 	
 .rectangle
+	+until($bp-md)
+		width: 300px
+		height: 300px
 	display: block
 	width: 378px
 	height: 378px
