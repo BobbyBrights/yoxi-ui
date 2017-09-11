@@ -3352,7 +3352,7 @@ textarea {
   font-family: "Libre Franklin", Baskerville, Georgia, Times, serif !important; }
 
 .sans {
-  font-family: "Neuzeit Grotesk", "Futura Std", Futura, Helevetica, Arial, sans-serif !important; }
+  font-family: "Neuzeit Grotesk", serif !important; }
 
 .has-text-left {
   text-align: left; }
@@ -4301,7 +4301,7 @@ html, body {
 
 body {
   line-height: 1.8;
-  font-family: "Neuzeit Grotesk", "Futura Std", Futura, Helevetica, Arial, sans-serif;
+  font-family: "Neuzeit Grotesk", serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale; }
 
@@ -7538,6 +7538,23 @@ button:hover {
 
 button:focus {
   outline: none; }
+
+@font-face {
+  font-family: "Neuzeit Grotesk";
+  src: url("../fonts/NeuzeitGro-Lig.otf");
+  font-weight: 300; }
+
+@font-face {
+  font-family: "Neuzeit Grotesk";
+  src: url("../fonts/NeuzeitGro-Reg.otf");
+  font-weight: normal;
+  font-weight: 500; }
+
+@font-face {
+  font-family: "Neuzeit Grotesk";
+  src: url("../fonts/NeuzeitGro-Bol.otf");
+  font-weight: bold;
+  font-weight: 700; }
 
 .site-nav {
   text-align: right; }
