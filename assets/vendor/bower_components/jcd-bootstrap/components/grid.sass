@@ -12,12 +12,9 @@
 	+from($container-max + $container-buffer * 2)
 		max-width: $container-max
 
-.columns,
-.grid
-	margin-left: -($grid-gutter)
-	margin-right: -($grid-gutter)
-
 .columns
+	margin-left: -1 * $grid-gutter
+	margin-right: -1 * $grid-gutter
 	flex-wrap: wrap
 	display: flex
 
@@ -27,17 +24,18 @@
 		padding-right: $grid-gutter
 		flex: 1
 
+.has-vert-centered-children
+	align-items: center
+
+
 @for $i from 1 through $grid-count
-	.is-offset-#{$i}
+	&.is-offset-#{$i}
 		+bp-responsive
-			margin-left: ($i / $grid-count) * 100%
+			margin-left: ($i / 12) * 100%
 	
 	.column.is-#{$i}
 		@extend .is-flex-none
 	
 	.is-#{$i}
 		+bp-responsive
-			width: ($i / $grid-count) * 100%
-
-.has-vert-centered-children
-	align-items: center
+			width: ($i / 12) * 100%

@@ -1,15 +1,14 @@
 {
   "name": "smooth-scroll",
   "homepage": "https://github.com/cferdinandi/smooth-scroll",
-  "version": "12.1.4",
-  "_release": "12.1.4",
+  "version": "12.1.5",
+  "_release": "12.1.5",
   "_resolution": {
     "type": "version",
-    "tag": "v12.1.4",
-    "commit": "1fa89f8a32fb77e1ebd7eb07637afb633cd0a479"
+    "tag": "v12.1.5",
+    "commit": "92f906b896a5cdd6d98b2755d04e8708c07251ec"
   },
   "_source": "https://github.com/cferdinandi/smooth-scroll.git",
   "_target": "^12.1.4",
-  "_originalSource": "cferdinandi/smooth-scroll",
-  "_direct": true
+  "_originalSource": "cferdinandi/smooth-scroll"
 }
