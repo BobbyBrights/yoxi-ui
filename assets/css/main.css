@@ -10588,7 +10588,7 @@ button:focus {
 
 @media screen and (min-width: 720px) {
   .bio-quote {
-    width: 60%;
+    width: 70%;
   }
 }
 
@@ -10693,8 +10693,8 @@ button:focus {
 }
 
 .bio.is-open .bio-toggle {
-  -webkit-transform: rotate(45deg);
-          transform: rotate(45deg);
+  -webkit-transform: rotate(180deg);
+          transform: rotate(180deg);
 }
 
 .timeline-section {

@@ -1,6 +1,7 @@
 var $ = require('jquery');
 var imagesLoaded = require('imagesloaded');
 var ScrollMagic = require('scrollmagic');
+import 'imports-loader?define=>false!scrollmagic/scrollmagic/uncompressed/plugins/animation.gsap';
 import {TweenMax, Power2, TimelineLite} from "gsap";
 
 imagesLoaded.makeJQueryPlugin( $ );
