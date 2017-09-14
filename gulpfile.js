@@ -18,6 +18,9 @@ var paths = {
             './assets/sass/**/*.scss',
             './assets/sass/**/*.sass'
         ],
+        scripts: [
+            './assets/js/**/*.js'
+        ],
         content: [
             '**/*.html', 
             '**/*.md', 
@@ -87,6 +90,7 @@ gulp.task('scripts', function() {
  */
 gulp.task('watch', function () {
     gulp.watch(paths.globs.sass, ['sass']);
+    gulp.watch(paths.globs.scripts, ['scripts']);
     gulp.watch(paths.globs.content, ['jekyll-rebuild']);
 });
 

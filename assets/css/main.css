@@ -7387,11 +7387,11 @@ button:focus {
   66% {
     -webkit-transform: rotate(-20deg);
             transform: rotate(-20deg); } }
-  .open .nav-toggle .fa {
+  .nav-open .nav-toggle .fa {
     -webkit-transform: rotate(45deg);
         -ms-transform: rotate(45deg);
             transform: rotate(45deg); }
-  .open .nav-toggle:hover .fa {
+  .nav-open .nav-toggle:hover .fa {
     -webkit-animation: jiggle-10deg-45deg 1s infinite;
             animation: jiggle-10deg-45deg 1s infinite; }
 
@@ -7425,7 +7425,7 @@ button:focus {
   max-height: 0;
   overflow: hidden;
   opacity: 0; }
-  .open .nav-links {
+  .nav-open .nav-links {
     max-height: 100%;
     opacity: 1; }
 
@@ -7447,6 +7447,24 @@ button:focus {
   .nav-item:hover {
     background-color: white;
     color: red; }
+
+html:before {
+  -webkit-transition: background-color 1s;
+  -o-transition: background-color 1s;
+  transition: background-color 1s; }
+
+html.nav-open {
+  overflow: hidden; }
+  html.nav-open:before {
+    content: '';
+    display: block;
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    z-index: 99; }
 
 .bg-images {
   position: fixed;

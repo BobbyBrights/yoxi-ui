@@ -8,6 +8,6 @@ $links.push( $toggle );
 
 $links.forEach(function($link){
 	$link.addEventListener('click', function(e){
-		document.querySelector('.site-nav').classList.toggle('open');
+		document.querySelector('html').classList.toggle('nav-open');
 	});
 });
