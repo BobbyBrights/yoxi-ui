@@ -6,16 +6,14 @@
 # 'jekyll serve'. If you change this file, please restart the server process.
 
 # Site settings
-title: Your awesome title
-email: your-email@domain.com
+title: Yoxi.tv
+email: sharon@yoxi.tv
 description: > # this means to ignore newlines until "baseurl:"
   Write an awesome description for your new site here. You can edit this
   line in _config.yml. It will appear in your document head meta (for
   Google search results) and in your feed.xml site description.
 baseurl: "" # the subpath of your site, e.g. /blog
-url: "http://yourdomain.com" # the base hostname & protocol for your site
-twitter_username: jekyllrb
-github_username:  jekyll
+url: "http://yoxi.tv" # the base hostname & protocol for your site
 
 # Build settings
 markdown: kramdown
@@ -23,21 +21,13 @@ kramdown:
   input: GFM
   syntax_highlighter: rouge
 
-# Where things are
-include: ["_pages"]
-sass:
-  sass_dir: assets/sass
-  style: :compressed
-
-# Build settings
+destination: dist
+source: src
+include:
+  - _pages
+  - assets
 exclude:
-  - Gemfile
-  - Gemfile.lock
-  - package.json
-  - README.md
-  - CNAME
   - node_modules
-  - gulpfile.js
 
 # Plugin settings
 gems:
