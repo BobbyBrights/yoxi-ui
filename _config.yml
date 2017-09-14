@@ -21,13 +21,18 @@ kramdown:
   input: GFM
   syntax_highlighter: rouge
 
-destination: dist
-source: src
 include:
   - _pages
-  - assets
 exclude:
   - node_modules
+  - Gemfile
+  - Gemfile.lock
+  - bower.json
+  - package.json
+  - webpack.mix.js
+  - gulpfile.js
+  - yarn.lock
+  - mix-manifest.json
 
 # Plugin settings
 gems:

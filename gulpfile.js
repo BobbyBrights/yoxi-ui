@@ -2,6 +2,7 @@ var gulp        = require('gulp');
 var browserSync = require('browser-sync');
 var sass        = require('gulp-sass');
 var plumber     = require('gulp-plumber');
+var browserify     = require('gulp-browserify');
 var prefix      = require('gulp-autoprefixer');
 var cp          = require('child_process');
 
@@ -56,7 +57,7 @@ gulp.task('browser-sync', ['assets', 'jekyll-build'], function() {
 /*
  * Group all assets tasks
  */
-gulp.task('assets', ['sass']);
+gulp.task('assets', ['sass', 'scripts']);
 
 /**
  * Compile files from _scss into both _site/css (for live injecting) and site (for future jekyll builds)
@@ -69,6 +70,15 @@ gulp.task('sass', function () {
         .pipe(gulp.dest(paths.base_dir + '/' + paths.css_dir))
         .pipe(gulp.dest(paths.css_dir))
         .pipe(browserSync.reload({stream:true}))
+});
+
+gulp.task('scripts', function() {
+
+    gulp.src('assets/js/scripts.js')
+        .pipe(browserify({
+          insertGlobals : true
+        }))
+        .pipe(gulp.dest('assets/js/dist'))
 });
 
 /**
