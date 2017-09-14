@@ -10834,7 +10834,7 @@ __webpack_require__(9);
 
 var SmoothScroll = __webpack_require__(6);
 
-var scroll = new SmoothScroll('a[href*="#"]', {
+var scroll = new SmoothScroll('.site-nav a[href*="#"]', {
 	header: '#site-header'
 });
 
