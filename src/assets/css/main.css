@@ -10370,15 +10370,42 @@ button:focus {
   transition: all 0.3s ease-in-out;
 }
 
-.bio-toggle svg {
-  width: 1.125rem;
-  fill: rgba(0, 0, 0, 0.8);
+@-webkit-keyframes bounce {
+  0% {
+    -webkit-transform: translateY(0%);
+            transform: translateY(0%);
+  }
+  50% {
+    -webkit-transform: translateY(30%);
+            transform: translateY(30%);
+  }
+}
+
+@keyframes bounce {
+  0% {
+    -webkit-transform: translateY(0%);
+            transform: translateY(0%);
+  }
+  50% {
+    -webkit-transform: translateY(30%);
+            transform: translateY(30%);
+  }
+}
+
+.bio-icon-reveal {
   -webkit-transition: all 0.3s ease-in-out;
   transition: all 0.3s ease-in-out;
 }
 
-.bio-toggle:hover svg {
-  fill: white;
+.bio:hover .bio-icon-reveal {
+  color: white;
+  -webkit-animation: bounce 1s infinite;
+          animation: bounce 1s infinite;
+}
+
+.bio-icon-close {
+  position: relative;
+  top: 1rem;
 }
 
 .bio.is-open .bio-text {
@@ -10387,9 +10414,16 @@ button:focus {
   opacity: 1;
 }
 
-.bio.is-open .bio-toggle {
+.bio.is-open .bio-icon-reveal {
+  -webkit-animation: none;
+          animation: none;
   -webkit-transform: rotate(180deg);
           transform: rotate(180deg);
+}
+
+.bio.is-open .bio-icon-close {
+  -webkit-animation: bounce 1s infinite;
+          animation: bounce 1s infinite;
 }
 
 .timeline-section {
@@ -10565,6 +10599,10 @@ h2 {
 
 .get-in-touch header {
   margin-bottom: 5rem;
+}
+
+.is-link-wrapper.no-effects:hover {
+  color: inherit;
 }
 
 .align-items-end {

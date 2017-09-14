@@ -56,13 +56,22 @@
 	opacity: 0
 	+transition-all
 
-.bio-toggle
-	svg
-		width: 1.125rem
-		fill: rgba(0,0,0,0.8)
-		+transition-all
-	&:hover svg
-		fill: white
+@keyframes bounce
+	0%
+		transform: translateY(0%)
+	50%
+		transform: translateY(30%)
+
+.bio-icon-reveal
+	+transition-all
+
+	.bio:hover &
+		color: white
+		animation: bounce 1s infinite
+
+.bio-icon-close
+	position: relative
+	top: 1rem
 
 .bio.is-open 
 	.bio-text
@@ -70,5 +79,9 @@
 		margin-bottom: 4rem
 		opacity: 1
 
-	.bio-toggle
+	.bio-icon-reveal
+		animation: none
 		transform: rotate(180deg)
+	
+	.bio-icon-close
+		animation: bounce 1s infinite
