@@ -7349,76 +7349,104 @@ button:focus {
 
 .site-nav {
   text-align: right; }
-  .site-nav .nav-toggle {
-    background-color: red;
-    color: white;
-    text-align: center;
-    padding: .25rem;
-    display: inline-block;
-    width: 2.25rem;
-    pointer-events: all; }
 
-@-webkit-keyframes jiggle {
+.nav-toggle {
+  background-color: red;
+  color: white;
+  text-align: center;
+  padding: .25rem;
+  display: inline-block;
+  width: 2.25rem;
+  pointer-events: all; }
+  .nav-toggle .fa {
+    -webkit-transition: all 0.3s ease-in-out;
+    -o-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out; }
+  .nav-toggle:hover .fa {
+    -webkit-animation: jiggle-10deg-0deg 1s infinite;
+            animation: jiggle-10deg-0deg 1s infinite; }
+
+@-webkit-keyframes jiggle-10deg-0deg {
   0% {
-    -webkit-transform: rotate(0);
-            transform: rotate(0); }
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg); }
   33% {
-    -webkit-transform: rotate(20deg);
-            transform: rotate(20deg); }
+    -webkit-transform: rotate(10deg);
+            transform: rotate(10deg); }
   66% {
     -webkit-transform: rotate(-20deg);
             transform: rotate(-20deg); } }
 
-@keyframes jiggle {
+@keyframes jiggle-10deg-0deg {
   0% {
-    -webkit-transform: rotate(0);
-            transform: rotate(0); }
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg); }
   33% {
-    -webkit-transform: rotate(20deg);
-            transform: rotate(20deg); }
+    -webkit-transform: rotate(10deg);
+            transform: rotate(10deg); }
   66% {
     -webkit-transform: rotate(-20deg);
             transform: rotate(-20deg); } }
-    .site-nav .nav-toggle:hover .fa {
-      -webkit-animation: jiggle 1s infinite;
-              animation: jiggle 1s infinite; }
-    .site-nav .nav-toggle .fa {
-      -webkit-transition: all 0.3s ease-in-out;
-      -o-transition: all 0.3s ease-in-out;
-      transition: all 0.3s ease-in-out; }
-  .site-nav.open .nav-toggle .fa {
+  .open .nav-toggle .fa {
     -webkit-transform: rotate(45deg);
         -ms-transform: rotate(45deg);
             transform: rotate(45deg); }
-  .site-nav .nav-links {
-    text-align: center;
-    -webkit-transition: all 0.3s ease-in-out;
-    -o-transition: all 0.3s ease-in-out;
-    transition: all 0.3s ease-in-out;
-    max-height: 0;
-    overflow: hidden;
-    opacity: 0; }
-  .site-nav.open .nav-links {
+  .open .nav-toggle:hover .fa {
+    -webkit-animation: jiggle-10deg-45deg 1s infinite;
+            animation: jiggle-10deg-45deg 1s infinite; }
+
+@-webkit-keyframes jiggle-10deg-45deg {
+  0% {
+    -webkit-transform: rotate(45deg);
+            transform: rotate(45deg); }
+  33% {
+    -webkit-transform: rotate(55deg);
+            transform: rotate(55deg); }
+  66% {
+    -webkit-transform: rotate(25deg);
+            transform: rotate(25deg); } }
+
+@keyframes jiggle-10deg-45deg {
+  0% {
+    -webkit-transform: rotate(45deg);
+            transform: rotate(45deg); }
+  33% {
+    -webkit-transform: rotate(55deg);
+            transform: rotate(55deg); }
+  66% {
+    -webkit-transform: rotate(25deg);
+            transform: rotate(25deg); } }
+
+.nav-links {
+  text-align: center;
+  -webkit-transition: all 0.3s ease-in-out;
+  -o-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+  max-height: 0;
+  overflow: hidden;
+  opacity: 0; }
+  .open .nav-links {
     max-height: 100%;
     opacity: 1; }
-  .site-nav .nav-item {
-    display: block;
-    padding: 2rem;
-    background-color: red;
-    color: white; }
-    .site-nav .nav-item:nth-child(1) {
-      background-color: red; }
-    .site-nav .nav-item:nth-child(2) {
-      background-color: #F46F1A; }
-    .site-nav .nav-item:nth-child(3) {
-      background-color: #F88912; }
-    .site-nav .nav-item:nth-child(4) {
-      background-color: #FBA309; }
-    .site-nav .nav-item:nth-child(5) {
-      background-color: #FFBD00; }
-    .site-nav .nav-item:hover {
-      background-color: white;
-      color: red; }
+
+.nav-item {
+  display: block;
+  padding: 2rem;
+  background-color: red;
+  color: white; }
+  .nav-item:nth-child(1) {
+    background-color: red; }
+  .nav-item:nth-child(2) {
+    background-color: #F46F1A; }
+  .nav-item:nth-child(3) {
+    background-color: #F88912; }
+  .nav-item:nth-child(4) {
+    background-color: #FBA309; }
+  .nav-item:nth-child(5) {
+    background-color: #FFBD00; }
+  .nav-item:hover {
+    background-color: white;
+    color: red; }
 
 .bg-images {
   position: fixed;
