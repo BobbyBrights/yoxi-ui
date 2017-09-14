@@ -9,6 +9,22 @@
 		display: inline-block
 		width: 2.25rem
 		pointer-events: all
+		
+		@keyframes jiggle
+			0%
+				transform: rotate(0)
+			33%
+				transform: rotate(20deg)
+			66%
+				transform: rotate(-20deg)
+		&:hover .fa
+			animation: jiggle 1s infinite
+
+		.fa
+			+transition-all
+
+	&.open .nav-toggle .fa
+		transform: rotate(45deg)
 
 	.nav-links
 		text-align: center

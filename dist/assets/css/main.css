@@ -10167,6 +10167,51 @@ button:focus {
   pointer-events: all;
 }
 
+@-webkit-keyframes jiggle {
+  0% {
+    -webkit-transform: rotate(0);
+            transform: rotate(0);
+  }
+  33% {
+    -webkit-transform: rotate(20deg);
+            transform: rotate(20deg);
+  }
+  66% {
+    -webkit-transform: rotate(-20deg);
+            transform: rotate(-20deg);
+  }
+}
+
+@keyframes jiggle {
+  0% {
+    -webkit-transform: rotate(0);
+            transform: rotate(0);
+  }
+  33% {
+    -webkit-transform: rotate(20deg);
+            transform: rotate(20deg);
+  }
+  66% {
+    -webkit-transform: rotate(-20deg);
+            transform: rotate(-20deg);
+  }
+}
+
+.site-nav .nav-toggle:hover .fa {
+  -webkit-animation: jiggle 1s infinite;
+          animation: jiggle 1s infinite;
+}
+
+.site-nav .nav-toggle .fa {
+  -webkit-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+}
+
+.site-nav.open .nav-toggle .fa {
+  -webkit-transform: rotate(45deg);
+          transform: rotate(45deg);
+}
+
 .site-nav .nav-links {
   text-align: center;
   -webkit-transition: all 0.3s ease-in-out;

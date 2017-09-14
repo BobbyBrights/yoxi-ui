@@ -10917,7 +10917,7 @@ $('.bg-images').imagesLoaded(function () {
 		var offset = -(images_height - window_height);
 		console.log(doc_height, window_height, images_height, duration, offset);
 
-		var tween = new TimelineMax().add([__WEBPACK_IMPORTED_MODULE_1_gsap__["TweenMax"].to(".bg-images", 1, { y: offset })]);
+		var tween = new TimelineMax().add([__WEBPACK_IMPORTED_MODULE_1_gsap__["TweenMax"].fromTo(".bg-images", 1, { y: 0 }, { y: offset })]);
 
 		var scene = new ScrollMagic.Scene({ triggerElement: '#site-main', duration: duration }).setTween(tween).addTo(controller);
 	}

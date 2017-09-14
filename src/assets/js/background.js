@@ -24,7 +24,9 @@ $('.bg-images').imagesLoaded(function(){
 		
 		var tween = new TimelineMax()
 			.add([
-				TweenMax.to( ".bg-images", 1, { y: (offset) })
+				TweenMax.fromTo( ".bg-images", 1, 
+					{ y: 0 },
+					{ y: (offset) })
 			]);
 
 		var scene = new ScrollMagic.Scene({ triggerElement: '#site-main', duration: (duration)})
