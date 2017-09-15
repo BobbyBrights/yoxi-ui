@@ -4211,7 +4211,7 @@ label:not(.checkbox) {
   background: red; }
 
 .container {
-  width: 90%;
+  width: 100%;
   margin-left: auto;
   margin-right: auto;
   display: block; }
@@ -7493,6 +7493,11 @@ html.nav-open {
     display: inline-block;
     min-width: 400px; }
 
+@media screen and (max-width: 479px) {
+  .bio {
+    margin-left: -5%;
+    margin-right: -5%; } }
+
 .bio-image,
 .bio-quote {
   z-index: 2;
@@ -7648,7 +7653,7 @@ html.nav-open {
 
 .timeline-events {
   margin: 0;
-  padding-bottom: 5rem; }
+  padding-bottom: 2.75rem; }
   @media screen and (min-width: 720px) {
     .timeline-events {
       border-left: 2px solid red; } }
@@ -7680,6 +7685,9 @@ html.nav-open {
     .timeline-event.level-primary:before {
       background: no-repeat 100% url("../icons/circle.svg"); }
   .timeline-event.level-secondary:before {
+    height: 1.125rem;
+    width: 1.125rem;
+    left: -2.6125rem;
     background: no-repeat 100% url("../icons/diamond.svg"); }
   .timeline-event.level-tertiary:before {
     background: no-repeat 100% url("../icons/dash.svg"); }
@@ -7693,12 +7701,21 @@ html, body {
   @media screen and (min-width: 1600px) {
     html, body {
       font-size: 20px; } }
+  @media screen and (max-width: 479px) {
+    html, body {
+      font-size: 95%; } }
 
-h2 {
+.section-heading {
   line-height: 1.1;
   z-index: 1;
   position: relative;
   font-size: 3rem; }
+  @media screen and (max-width: 1199px) {
+    .section-heading {
+      font-size: 2.5rem; } }
+  @media screen and (max-width: 479px) {
+    .section-heading {
+      font-size: 1.95rem; } }
 
 .site-header {
   z-index: 99999;
@@ -7711,6 +7728,10 @@ h2 {
 .site-main {
   position: relative;
   z-index: 2; }
+  @media screen and (max-width: 719px) {
+    .site-main {
+      width: 80%;
+      margin: 0 auto; } }
   .site-main > section:first-child {
     margin-top: 300px; }
 

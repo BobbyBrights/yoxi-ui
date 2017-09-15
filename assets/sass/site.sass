@@ -6,13 +6,19 @@ html,body
 	overflow-x: hidden
 	+from(1600px)
 		font-size: $base-font-size
+	+until($bp-sm)
+		font-size: 95%
 
-h2 
+// h2,
+.section-heading
 	line-height: 1.1
 	z-index: 1
 	position: relative
 	font-size: 3rem
-
+	+until($bp-xl)
+		font-size: 2.5rem
+	+until($bp-sm)
+		font-size: 1.95rem
 .site-header 
 	z-index: 99999
 	width: 100%
@@ -26,6 +32,10 @@ h2
 .site-main
 	position: relative
 	z-index: 2
+
+	+until($bp-md)
+		width: 80%
+		margin: 0 auto
 
 	> section:first-child
 		margin-top: 300px

@@ -18,7 +18,7 @@ $gap: 2rem
 
 .timeline-events
 	margin: 0
-	padding-bottom: 5rem
+	padding-bottom: 2.75rem
 
 	+from($bp-md)
 		border-left: 2px solid $color-primary
@@ -56,6 +56,10 @@ $gap: 2rem
 
 	&.level-secondary
 		&:before
+			$timeline-icon-secondary: 1.125rem
+			height: $timeline-icon-secondary
+			width: $timeline-icon-secondary
+			left: -($gap + .05 + $timeline-icon-secondary/2)
 			background: no-repeat 100% url('../icons/diamond.svg')
 
 	&.level-tertiary
