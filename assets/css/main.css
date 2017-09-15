@@ -7723,7 +7723,9 @@ html, body {
   .site-header a {
     pointer-events: all; }
   .site-header .site-logo {
-    width: 100px; }
+    width: 100px;
+    height: 100px;
+    background-color: #ff4b00; }
 
 .site-main {
   position: relative;

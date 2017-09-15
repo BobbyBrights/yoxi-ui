@@ -15,8 +15,10 @@ var paths = {
     base_dir: '_site',
     globs: {
         sass: [
+            './assets/sass/**/*.sass',
+            './assets/sass/*.sass',
             './assets/sass/**/*.scss',
-            './assets/sass/**/*.sass'
+            './assets/scss/*.sass',
         ],
         scripts: [
             './assets/js/*.js'
@@ -27,8 +29,8 @@ var paths = {
             '**/*.md', 
             '_data/**/*.yml', 
             '_data/**/*.yaml', 
-            './*.yml', 
-            './*.yaml', 
+            '*.yml', 
+            '*.yaml', 
             '**/*.markdown', 
             'assets/js/*.js',
             '!_site'
@@ -74,4 +76,4 @@ gulp.task('watch', ['browser-sync'], function () {
     gulp.watch(paths.globs.content, ['jekyll-rebuild']);
 });
 
-gulp.task('default', ['browser-sync']);
+gulp.task('default', ['watch']);
