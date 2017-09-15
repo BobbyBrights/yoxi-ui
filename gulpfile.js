@@ -19,7 +19,7 @@ var paths = {
             './assets/sass/**/*.sass'
         ],
         scripts: [
-            './assets/js/**/*.js'
+            './assets/js/*.js'
         ],
         content: [
             '_includes/**/*.html', 
@@ -30,7 +30,8 @@ var paths = {
             './*.yml', 
             './*.yaml', 
             '**/*.markdown', 
-            'assets/js/**/*.js'
+            'assets/js/*.js',
+            '!_site'
         ]
     }
 };
@@ -73,4 +74,4 @@ gulp.task('watch', ['browser-sync'], function () {
     gulp.watch(paths.globs.content, ['jekyll-rebuild']);
 });
 
-gulp.task('default', ['watch']);
+gulp.task('default', ['browser-sync']);
