@@ -72,13 +72,43 @@ require('./nav-toggle.js');
 require('./bios.js');
 require('./background.js');
 
-}).call(this,require("Wb8Gej"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/fake_38f6358e.js","/")
+}).call(this,require("Wb8Gej"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/fake_3719f7cd.js","/")
 },{"./background.js":1,"./bios.js":2,"./modal.js":4,"./nav-toggle.js":5,"./smoothscroll.js":6,"Wb8Gej":9,"buffer":8}],4:[function(require,module,exports){
 (function (process,global,Buffer,__argument0,__argument1,__argument2,__argument3,__filename,__dirname){
 var $ = require('jquery');
 
 $(document).ready(function(){
-	$('body').toggleClass('modal-open');
+	$html = $('html');
+	$section_questions = $('.modal-section-questions');
+	$section_results = $('.modal-section-results');
+	$form = $('#modal-form');
+	$questions = $form.find('input[type="radio"]');
+	$results_btns = $section_results.find('.btn');
+
+	function toggleModalDisplay() {
+		$html.toggleClass('modal-open');
+		$html.toggleClass('no-scroll');
+	}
+
+	toggleModalDisplay();
+
+	$questions.on('click', function(){
+		$('#modal-form').submit();
+	})
+
+	$form.on('submit', function(e){
+		e.preventDefault();
+
+		$data = $(this).serializeArray();
+		console.log($data[0].value);
+
+		$section_questions.toggleClass('is-hidden');
+		$section_results.toggleClass('is-hidden');
+	})
+
+	$results_btns.on('click', function(e){
+		toggleModalDisplay();
+	});
 })
 }).call(this,require("Wb8Gej"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/modal.js","/")
 },{"Wb8Gej":9,"buffer":8,"jquery":14}],5:[function(require,module,exports){
@@ -94,6 +124,7 @@ $links.push( $toggle );
 $links.forEach(function($link){
 	$link.addEventListener('click', function(e){
 		document.querySelector('html').classList.toggle('nav-open');
+		document.querySelector('html').classList.toggle('no-scroll');
 	});
 });
 
@@ -102,7 +133,7 @@ $links.forEach(function($link){
 (function (process,global,Buffer,__argument0,__argument1,__argument2,__argument3,__filename,__dirname){
 var SmoothScroll = require('smooth-scroll');
 
-var scroll = new SmoothScroll('.site-nav a[href*="#"]',{
+var scroll = new SmoothScroll('.site-nav a[href*="#"], .modal-section-results a[href*="#"]',{
 	header: '#site-header'
 });
 

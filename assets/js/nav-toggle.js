@@ -9,5 +9,6 @@ $links.push( $toggle );
 $links.forEach(function($link){
 	$link.addEventListener('click', function(e){
 		document.querySelector('html').classList.toggle('nav-open');
+		document.querySelector('html').classList.toggle('no-scroll');
 	});
 });
