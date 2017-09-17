@@ -1,3 +1,4 @@
+require('./modal.js');
 require('./smoothscroll.js');
 require('./nav-toggle.js');
 require('./bios.js');

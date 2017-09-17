@@ -4194,12 +4194,12 @@ label:not(.checkbox) {
 
 .btn {
   display: inline-block;
-  padding: 0.75em 1em;
+  padding: 1.5rem;
   text-decoration: none;
   -webkit-border-radius: 0;
           border-radius: 0; }
   .btn.btn-small {
-    padding: 0.7em 1em; }
+    padding: 1rem; }
 
 .btn-default {
   background: #f2f2f2; }
@@ -7280,7 +7280,7 @@ label:not(.checkbox) {
   overflow: visible;
   clip: auto; }
 
-a.btn,
+.btn,
 button,
 [type="button"],
 [type="reset"],
@@ -7290,25 +7290,27 @@ button,
   background-color: transparent;
   border: none;
   margin: 0;
-  padding: 0;
+  padding: 1.5rem;
   -webkit-transition: all 0.3s ease-in-out;
   -o-transition: all 0.3s ease-in-out;
   transition: all 0.3s ease-in-out; }
-  a.btn.btn-primary,
+  .btn.btn-primary,
   button.btn-primary,
   [type="button"].btn-primary,
   [type="reset"].btn-primary,
   [type="submit"].btn-primary {
     background-color: #ff4b00;
+    border: 2px solid #ff4b00;
     color: white; }
-    a.btn.btn-primary:hover,
+    .btn.btn-primary:hover,
     button.btn-primary:hover,
     [type="button"].btn-primary:hover,
     [type="reset"].btn-primary:hover,
     [type="submit"].btn-primary:hover {
+      border-color: white;
       background-color: white;
       color: #ff4b00; }
-  a.btn.btn-outline,
+  .btn.btn-outline,
   button.btn-outline,
   [type="button"].btn-outline,
   [type="reset"].btn-outline,
@@ -7316,13 +7318,26 @@ button,
     border: 2px solid #ff4b00;
     background-color: transparent;
     color: #ff4b00; }
-    a.btn.btn-outline:hover,
+    .btn.btn-outline:hover,
     button.btn-outline:hover,
     [type="button"].btn-outline:hover,
     [type="reset"].btn-outline:hover,
     [type="submit"].btn-outline:hover {
       background-color: #ff4b00;
       color: white; }
+
+.btn-group {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex; }
+  .btn-group .btn {
+    -webkit-box-flex: 1;
+    -webkit-flex: 1;
+        -ms-flex: 1;
+            flex: 1; }
+  .btn-group .btn + .btn {
+    margin-left: 1rem; }
 
 button:hover {
   cursor: pointer; }
@@ -7693,12 +7708,49 @@ html.nav-open {
     background: no-repeat 100% url("../icons/dash.svg"); }
 
 .modal {
-  background: black;
-  position: fixed;
-  top: 0;
-  left: 0;
+  display: none;
+  z-index: 999; }
+  .modal-open .modal {
+    display: block; }
+
+.modal-container {
   height: 100%;
+  width: 100%;
+  padding: 10%; }
+
+.radio {
+  margin: 1.5rem 0; }
+  .radio input[type="radio"] {
+    opacity: 0; }
+
+.input-group {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  margin: 1.5rem 0; }
+  .input-group .btn-outline + .btn-outline {
+    border-left: none;
+    margin: 0; }
+
+.modal-form .input-text,
+.modal-form button,
+.modal-form .radio {
+  padding: 1.5rem;
+  color: white; }
+
+.modal-form .input-text:hover, .modal-form .input-text:focus {
+  background: transparent; }
+
+.modal-form .radio {
+  font-weight: 700;
   width: 100%; }
+
+.modal-section-results .modal-result-number {
+  width: 20%; }
+
+.modal-section-results .modal-result-description {
+  line-height: 1.2; }
 
 html, body {
   background-color: black;
@@ -7713,6 +7765,14 @@ html, body {
     html, body {
       font-size: 95%; } }
 
+input[type="text"],
+input[type="email"],
+input[type="password"],
+input[type="submit"],
+input[type="number"] {
+  padding: 1.5rem;
+  margin: 1.5rem 0; }
+
 .section-heading {
   line-height: 1.1;
   z-index: 1;
@@ -7726,14 +7786,15 @@ html, body {
       font-size: 1.95rem; } }
 
 .site-header {
-  z-index: 99999;
+  z-index: 99;
   width: 100%; }
   .site-header a {
     pointer-events: all; }
-  .site-header .site-logo {
-    width: 100px;
-    height: 100px;
-    background-color: #ff4b00; }
+
+.site-logo {
+  width: 100px;
+  height: 100px;
+  background-color: #ff4b00; }
 
 .site-main {
   position: relative;
@@ -7765,18 +7826,10 @@ html, body {
       width: 45%; } }
 
 .explore-yoxi li a {
-  display: block;
-  padding: 1rem; }
+  display: block; }
 
 .explore-yoxi .fa {
   margin-right: 1rem; }
-
-.get-in-touch form {
-  position: relative; }
-
-.get-in-touch input {
-  margin: 1.5rem 0;
-  padding: 1.5rem; }
 
 .get-in-touch header {
   margin-bottom: 5rem; }

@@ -1,7 +1,48 @@
 .modal
-	background: black
-	position: fixed
-	top: 0
-	left: 0
+	display: none
+	z-index: 999
+
+	.modal-open &
+		display: block
+
+.modal-container
 	height: 100%
 	width: 100%
+	padding: 10%
+
+.radio
+	margin: $button-padding 0
+	input[type="radio"]
+		opacity: 0
+
+.input-group
+	display: flex
+	margin: $button-padding 0
+
+	.btn-outline + .btn-outline
+		border-left: none
+		margin: 0
+
+.modal-form
+	.input-text,
+	button,
+	.radio
+		padding: $button-padding
+		color: white
+
+	.input-text
+		&:hover,
+		&:focus
+			background: transparent
+	
+	.radio
+		font-weight: 700
+		width: 100%
+
+.modal-section-results
+
+	.modal-result-number
+		width: 20%
+
+	.modal-result-description
+		line-height: 1.2

@@ -1,4 +1,4 @@
-a.btn,
+.btn,
 button, 
 [type="button"], 
 [type="reset"], 
@@ -8,14 +8,16 @@ button,
 	background-color: transparent
 	border: none
 	margin: 0
-	padding: 0
+	padding: $button-padding
 	+transition-all
 
 	&.btn-primary
 		background-color: $color-primary
+		border: 2px solid $color-primary
 		color: white
 
 		&:hover
+			border-color: white
 			background-color: white
 			color: $color-primary
 
@@ -27,6 +29,15 @@ button,
 		&:hover
 			background-color: $color-primary
 			color: white
+
+.btn-group
+	display: flex
+
+	.btn
+		flex: 1
+
+	.btn + .btn
+		margin-left: 1rem
 
 button
 	&:hover

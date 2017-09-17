@@ -9,6 +9,15 @@ html,body
 	+until($bp-sm)
 		font-size: 95%
 
+input[type="text"],
+input[type="email"],
+input[type="password"],
+input[type="submit"],
+input[type="number"]
+	padding: $button-padding
+	margin: $button-padding 0
+
+
 // h2,
 .section-heading
 	line-height: 1.1
@@ -20,16 +29,16 @@ html,body
 	+until($bp-sm)
 		font-size: 1.95rem
 .site-header 
-	z-index: 99999
+	z-index: 99
 	width: 100%
 
 	a
 		pointer-events: all
 
-	.site-logo 
-		width: 100px
-		height: 100px
-		background-color: $color-primary
+.site-logo 
+	width: 100px
+	height: 100px
+	background-color: $color-primary
 
 .site-main
 	position: relative
@@ -53,31 +62,19 @@ html,body
 		margin-right: .25rem
 		background-color: rgba(0,0,0,0.1)
 
-// 
-// SECTIONS
-// 
-.what-is-yoxi 
-	p
-		// margin-left: 14rem
 
 .explore-yoxi 
 	li
-		margin-right: 1rem
-		margin-bottom: 1rem
+		margin-right: $button-padding-small
+		margin-bottom: $button-padding-small
 		+from($bp-lg)
 			display: inline-block
 			width: 45%
 	li a
 		display: block
-		padding: 1rem
 	.fa
-		margin-right: 1rem
+		margin-right: $button-padding-small
 
 .get-in-touch
-	form
-		position: relative
-	input
-		margin: 1.5rem 0
-		padding: 1.5rem
 	header
 		margin-bottom: 5rem
