@@ -33,7 +33,6 @@ exclude:
   - gulpfile.js
   - yarn.lock
   - mix-manifest.json
-  - vendor
 
 # Plugin settings
 gems:
