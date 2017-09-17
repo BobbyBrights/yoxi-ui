@@ -7703,6 +7703,7 @@ button:focus {
 .radio {
   margin: 1.5rem 0; }
   .radio input[type="radio"] {
+    display: none;
     opacity: 0; }
 
 .input-group {
@@ -7711,8 +7712,8 @@ button:focus {
   display: -ms-flexbox;
   display: flex;
   margin: 1.5rem 0; }
-  .input-group .btn-outline + .btn-outline {
-    border-left: none;
+  .input-group > * + * {
+    border-left: none !important;
     margin: 0; }
 
 .modal-form .input-text,

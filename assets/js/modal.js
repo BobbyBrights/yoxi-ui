@@ -15,21 +15,21 @@ $(document).ready(function(){
 
 	toggleModalDisplay();
 
-	$questions.on('click', function(){
-		$('#modal-form').submit();
-	})
+	// $questions.on('click', function(){
+	// 	$('#modal-form').submit();
+	// })
 
-	$form.on('submit', function(e){
-		e.preventDefault();
+	// $form.on('submit', function(e){
+	// 	e.preventDefault();
 
-		$data = $(this).serializeArray();
-		console.log($data[0].value);
+	// 	$data = $(this).serializeArray();
+	// 	console.log($data[0].value);
 
-		$section_questions.toggleClass('is-hidden');
-		$section_results.toggleClass('is-hidden');
-	})
+	// 	$section_questions.toggleClass('is-hidden');
+	// 	$section_results.toggleClass('is-hidden');
+	// })
 
-	$results_btns.on('click', function(e){
-		toggleModalDisplay();
-	});
+	// $results_btns.on('click', function(e){
+	// 	toggleModalDisplay();
+	// });
 })
