@@ -4,8 +4,8 @@ $(document).ready(function(){
 	$html = $('html');
 	$section_questions = $('.modal-section-questions');
 	$section_results = $('.modal-section-results');
-	$form = $('#modal-form');
-	$questions = $form.find('input[type="radio"]');
+	$form = $('.modal-form');
+	$questions = $form.find('.radio-btn');
 	$results_btns = $section_results.find('.btn');
 
 	function toggleModalDisplay() {
@@ -16,7 +16,10 @@ $(document).ready(function(){
 	toggleModalDisplay();
 
 	// $questions.on('click', function(){
-	// 	$('#modal-form').submit();
+	// 	setInterval(function(){
+	// 		$('.modal-form').submit()
+	// 		console.log("CLICKED")
+	// 	}, 1000)
 	// })
 
 	// $form.on('submit', function(e){

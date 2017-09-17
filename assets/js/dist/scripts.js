@@ -24,7 +24,7 @@ require('./nav-toggle.js');
 require('./bios.js');
 // require('./background.js');
 
-}).call(this,require("Wb8Gej"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/fake_b7ec832f.js","/")
+}).call(this,require("Wb8Gej"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/fake_47c3b6c8.js","/")
 },{"./bios.js":1,"./modal.js":3,"./nav-toggle.js":4,"./smoothscroll.js":5,"Wb8Gej":8,"buffer":7}],3:[function(require,module,exports){
 (function (process,global,Buffer,__argument0,__argument1,__argument2,__argument3,__filename,__dirname){
 var $ = require('jquery');
@@ -33,8 +33,8 @@ $(document).ready(function(){
 	$html = $('html');
 	$section_questions = $('.modal-section-questions');
 	$section_results = $('.modal-section-results');
-	$form = $('#modal-form');
-	$questions = $form.find('input[type="radio"]');
+	$form = $('.modal-form');
+	$questions = $form.find('.radio-btn');
 	$results_btns = $section_results.find('.btn');
 
 	function toggleModalDisplay() {
@@ -45,7 +45,10 @@ $(document).ready(function(){
 	toggleModalDisplay();
 
 	// $questions.on('click', function(){
-	// 	$('#modal-form').submit();
+	// 	setInterval(function(){
+	// 		$('.modal-form').submit()
+	// 		console.log("CLICKED")
+	// 	}, 1000)
 	// })
 
 	// $form.on('submit', function(e){
