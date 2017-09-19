@@ -31,13 +31,18 @@ button,
 			color: white
 
 .btn-group
-	display: flex
-
 	.btn
-		flex: 1
+		display: block
+		margin-bottom: $button-padding / 2
 
-	.btn + .btn
-		margin-left: 1rem
+	+from($bp-md)
+		display: flex
+		.btn
+			flex: 1
+			margin-bottom: 0
+		.btn + .btn
+			margin-left: 1rem
+	
 
 button
 	&:hover

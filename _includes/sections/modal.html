@@ -1,11 +1,12 @@
+<script src="{{ "assets/js/jotform.js" | prepend: site.baseurl }}"></script>
 <section class="modal is-overlay has-bg-img" style="background-image: url('{{ 'assets/imgs/bg-imgs/Corner_Interests.jpg' }}')">
 	<img class="site-logo is-block is-marginless is-absolute" src="{{ "assets/imgs/Logo.svg" | prepend: site.baseurl }}" alt="{{site.title}} Logo">
-	<div class="modal-container has-flex-centered-contents">
+	<div class="modal-container">
 		<section class="modal-section-questions wrapper">
-			<header class="has-margin-left-large has-margin-bottom-large">
+			<header class="has-margin-left-large-lg has-margin-bottom-large">
 				<h2 class="is-marginless section-heading">Imagine you have unlimited resources to spend on one challenge,which question below would you pay to answer?</h2>
 			</header>
-			<form class="modal-form" id="modal-form">
+			<form class="modal-form is-marginless" id="modal-form">
 				<label for="question-1" class="radio btn btn-primary">
 					How might an experience of death before dying impact our global leaders and their priorities?
 					<input type="radio" name="modal-question" id="question-1" value="1">
@@ -25,31 +26,31 @@
 			</form>
 		</section>
 		<section class="modal-section-results wrapper is-hidden">
-			<div class="modal-results has-margin-bottom-large">
+			<div class="modal-results has-margin-left-large-md has-margin-bottom-large">
 
-				<div class="modal-result is-flex is-align-center">
-					<p class="modal-result-number is-marginless is-fs-5 is-strong">31%</p>
+				<div class="modal-result is-flex-md is-align-center">
+					<p class="modal-result-number is-fs-5 is-strong">31%</p>
 					<p class="modal-result-description is-marginless">
 						How might an experience of death before dying impact our global leaders and their priorities?
 					</p>
 				</div>
 				
-				<div class="modal-result is-flex is-align-center">
-					<p class="modal-result-number is-marginless is-fs-5 is-strong">38%</p>
+				<div class="modal-result is-flex-md is-align-center">
+					<p class="modal-result-number is-fs-5 is-strong">38%</p>
 					<p class="modal-result-description is-marginless">
 						If we manage to feed everyone on the planet, what other systems safeguards do we need in place?
 					</p>
 				</div>
 				
-				<div class="modal-result is-flex is-align-center">
-					<p class="modal-result-number is-marginless is-fs-5 is-strong">20%</p>
+				<div class="modal-result is-flex-md is-align-center">
+					<p class="modal-result-number is-fs-5 is-strong">20%</p>
 					<p class="modal-result-description is-marginless">
 						What does a fully optimized human look like and how do they differ from you?
 					</p>
 				</div>
 				
-				<div class="modal-result is-flex is-align-center">
-					<p class="modal-result-number is-marginless is-fs-5 is-strong">11%</p>
+				<div class="modal-result is-flex-md is-align-center">
+					<p class="modal-result-number is-fs-5 is-strong">11%</p>
 					<p class="modal-result-description is-marginless">
 						Other
 					</p>

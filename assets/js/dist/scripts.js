@@ -24,47 +24,68 @@ require('./nav-toggle.js');
 require('./bios.js');
 // require('./background.js');
 
-}).call(this,require("Wb8Gej"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/fake_d3056ed5.js","/")
+}).call(this,require("Wb8Gej"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/fake_a7346ac0.js","/")
 },{"./bios.js":1,"./modal.js":3,"./nav-toggle.js":4,"./smoothscroll.js":5,"Wb8Gej":8,"buffer":7}],3:[function(require,module,exports){
 (function (process,global,Buffer,__argument0,__argument1,__argument2,__argument3,__filename,__dirname){
 var $ = require('jquery');
+// var JF = require('./jotform.js');
+
+const jf_api_key = 'd7d54abea4a6385adda90e55f26ddf55';
+const jf_form_id = '72595797285174';
 
 $(document).ready(function(){
 	$html = $('html');
-	$section_questions = $('.modal-section-questions');
-	$section_results = $('.modal-section-results');
-	$form = $('.modal-form');
-	$questions = $form.find('.radio-btn');
-	$results_btns = $section_results.find('.btn');
+	$page1 = $('.modal-section-questions');
+	$page2 = $('.modal-section-results');
+
+	if (typeof JF != 'undefined') {
+		JF.initialize({ apiKey: jf_api_key });
+		console.log('JF Initialized');
+	}
 
 	function toggleModalDisplay() {
 		$html.toggleClass('modal-open');
 		$html.toggleClass('no-scroll');
 	}
 
+	function toggleModalPages() {
+		$page1.toggleClass('is-hidden');
+		$page2.toggleClass('is-hidden');
+		$results = getJFFormResults();
+		updateResults($results);
+	}
+
+	function getJFFormResults() {
+		return ['12','12','12','12'];
+	}
+
+	function updateResults($array) {
+		$('.modal-result-number').each(function($i){
+			$(this).text($array[$i] + "%");
+		});
+	}
+
 	toggleModalDisplay();
 
-	// $questions.on('click', function(){
-	// 	setInterval(function(){
-	// 		$('.modal-form').submit()
-	// 		console.log("CLICKED")
-	// 	}, 1000)
-	// })
+	$('[name="modal-question"]').on('change', function(e){
+		console.log("Changed");
+		e.preventDefault();
+		toggleModalPages();
+	});
 
-	// $form.on('submit', function(e){
-	// 	e.preventDefault();
+	$('#modal-form').submit(function(e){
+		console.log("Submitted");
+		e.preventDefault();
+		toggleModalPages();
+	});
 
-	// 	$data = $(this).serializeArray();
-	// 	console.log($data[0].value);
+	$('.modal-section-results .btn').click(function(e){
+		console.log("Closing Modal");
+		toggleModalDisplay();
+	});
+});
 
-	// 	$section_questions.toggleClass('is-hidden');
-	// 	$section_results.toggleClass('is-hidden');
-	// })
 
-	// $results_btns.on('click', function(e){
-	// 	toggleModalDisplay();
-	// });
-})
 }).call(this,require("Wb8Gej"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/modal.js","/")
 },{"Wb8Gej":8,"buffer":7,"jquery":10}],4:[function(require,module,exports){
 (function (process,global,Buffer,__argument0,__argument1,__argument2,__argument3,__filename,__dirname){
