@@ -1,18 +1,11 @@
 var $ = require('jquery');
-// var JF = require('./jotform.js');
+var getJFFormResults = require('./jotformTransformer.js');
 
-const jf_api_key = 'd7d54abea4a6385adda90e55f26ddf55';
-const jf_form_id = '72595797285174';
 
 $(document).ready(function(){
 	$html = $('html');
 	$page1 = $('.modal-section-questions');
 	$page2 = $('.modal-section-results');
-
-	if (typeof JF != 'undefined') {
-		JF.initialize({ apiKey: jf_api_key });
-		console.log('JF Initialized');
-	}
 
 	function toggleModalDisplay() {
 		$html.toggleClass('modal-open');
@@ -22,17 +15,26 @@ $(document).ready(function(){
 	function toggleModalPages() {
 		$page1.toggleClass('is-hidden');
 		$page2.toggleClass('is-hidden');
-		$results = getJFFormResults();
-		updateResults($results);
+		var results = getJFFormResults();
+		results.then(function(answers){
+			updateResults(answers);
+		});
 	}
 
-	function getJFFormResults() {
-		return ['12','12','12','12'];
-	}
+	function updateResults(answers) {
+		var $results = $('.modal-section-results .modal-result');
 
-	function updateResults($array) {
-		$('.modal-result-number').each(function($i){
-			$(this).text($array[$i] + "%");
+		$results.each(function($i){
+			var text = $(this).find('.modal-result-description').text().trim();
+			var $percent = $(this).find('.modal-result-number');
+
+			var key = answers.findIndex(function(item){
+				return item.answer === text;
+			});
+
+			if (key >= 0) {
+				$percent.text(answers[key].percent + "%");
+			}
 		});
 	}
 

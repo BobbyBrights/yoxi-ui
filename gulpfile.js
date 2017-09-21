@@ -21,6 +21,7 @@ var paths = {
             './assets/scss/*.sass',
         ],
         scripts: [
+            '!./assets/js/dist',
             './assets/js/*.js'
         ],
         content: [
@@ -33,6 +34,7 @@ var paths = {
             '*.yaml', 
             '**/*.markdown', 
             'assets/js/*.js',
+            '!assets/js/dist',
             '!_site'
         ]
     }
