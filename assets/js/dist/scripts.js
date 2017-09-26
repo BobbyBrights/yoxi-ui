@@ -24,10 +24,10 @@ require('./nav-toggle.js');
 require('./bios.js');
 // require('./background.js');
 
-}).call(this,require("Wb8Gej"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/fake_94cbb262.js","/")
+}).call(this,require("Wb8Gej"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/fake_fb9af7f7.js","/")
 },{"./bios.js":1,"./modal.js":4,"./nav-toggle.js":5,"./smoothscroll.js":6,"Wb8Gej":9,"buffer":8}],3:[function(require,module,exports){
 (function (process,global,Buffer,__argument0,__argument1,__argument2,__argument3,__filename,__dirname){
-module.exports = function() {
+var JFTransformer = function() {
 	const jf_api_key = 'd7d54abea4a6385adda90e55f26ddf55';
 	const jf_form_id = '72595797285174';
 
@@ -46,19 +46,16 @@ module.exports = function() {
 		});
 	}
 
-	function reduceEntries(entries) {
+	function groupByAnswer(entries) {
 		return entries.reduce(function(sum, entry){
-
 			var index = sum.findIndex(function(answer){
 				return answer.answer === entry;
-			})
-
+			});
 			if(index >= 0) {
 				sum[index].count++;
 			} else {
 				sum.push({'answer': entry, 'count': 1}); 
 			}
-
 			return sum;
 		}, []); 
 	}
@@ -68,30 +65,34 @@ module.exports = function() {
 			return sum + item.count;
 		}, 0);
 
-		var answers = answers.map(function(item) {
-
+		return answers.map(function(item) {
 			item.percent = Math.floor( (item.count / totalResponses) * 100);
 			return item;
 		});
-
-		console.log(answers);
-		return answers;
 	}
-	
-	return new Promise(function(resolve, reject){
-		JF.getFormSubmissions(jf_form_id, function(response){
-			var answers = reduceEntries(formatResponse(response));
-			answers = includePercents(answers);
-			resolve(answers);
+
+	function getResults() {
+		return new Promise(function(resolve, reject){
+			JF.getFormSubmissions(jf_form_id, function(response){
+				response = formatResponse(response);
+				response = groupByAnswer(response);
+				response = includePercents(response);
+				resolve(response);
+			});
 		});
-	});
-}
+	}
+
+	return {
+		getResults: getResults
+	};
+};
+
+module.exports = JFTransformer();
 }).call(this,require("Wb8Gej"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/jotformTransformer.js","/")
 },{"Wb8Gej":9,"buffer":8}],4:[function(require,module,exports){
 (function (process,global,Buffer,__argument0,__argument1,__argument2,__argument3,__filename,__dirname){
 var $ = require('jquery');
-var getJFFormResults = require('./jotformTransformer.js');
-
+var JFTransformer = require('./jotformTransformer.js');
 
 $(document).ready(function(){
 	$html = $('html');
@@ -106,19 +107,17 @@ $(document).ready(function(){
 	function toggleModalPages() {
 		$page1.toggleClass('is-hidden');
 		$page2.toggleClass('is-hidden');
-		var results = getJFFormResults();
-		results.then(function(answers){
-			updateResults(answers);
-		});
+		
+		JFTransformer.getResults()
+			.then(function(answers){
+				updateResults(answers);
+			});
 	}
 
 	function updateResults(answers) {
-		var $results = $('.modal-section-results .modal-result');
-
-		$results.each(function($i){
+		$('.modal-section-results .modal-result').each(function(){
 			var text = $(this).find('.modal-result-description').text().trim();
 			var $percent = $(this).find('.modal-result-number');
-
 			var key = answers.findIndex(function(item){
 				return item.answer === text;
 			});
@@ -132,19 +131,16 @@ $(document).ready(function(){
 	toggleModalDisplay();
 
 	$('[name="modal-question"]').on('change', function(e){
-		console.log("Changed");
 		e.preventDefault();
 		toggleModalPages();
 	});
 
 	$('#modal-form').submit(function(e){
-		console.log("Submitted");
 		e.preventDefault();
 		toggleModalPages();
 	});
 
 	$('.modal-section-results .btn').click(function(e){
-		console.log("Closing Modal");
 		toggleModalDisplay();
 	});
 });

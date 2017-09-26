@@ -1,6 +1,5 @@
 var $ = require('jquery');
-var getJFFormResults = require('./jotformTransformer.js');
-
+var JFTransformer = require('./jotformTransformer.js');
 
 $(document).ready(function(){
 	$html = $('html');
@@ -15,19 +14,17 @@ $(document).ready(function(){
 	function toggleModalPages() {
 		$page1.toggleClass('is-hidden');
 		$page2.toggleClass('is-hidden');
-		var results = getJFFormResults();
-		results.then(function(answers){
-			updateResults(answers);
-		});
+		
+		JFTransformer.getResults()
+			.then(function(answers){
+				updateResults(answers);
+			});
 	}
 
 	function updateResults(answers) {
-		var $results = $('.modal-section-results .modal-result');
-
-		$results.each(function($i){
+		$('.modal-section-results .modal-result').each(function(){
 			var text = $(this).find('.modal-result-description').text().trim();
 			var $percent = $(this).find('.modal-result-number');
-
 			var key = answers.findIndex(function(item){
 				return item.answer === text;
 			});
@@ -41,19 +38,16 @@ $(document).ready(function(){
 	toggleModalDisplay();
 
 	$('[name="modal-question"]').on('change', function(e){
-		console.log("Changed");
 		e.preventDefault();
 		toggleModalPages();
 	});
 
 	$('#modal-form').submit(function(e){
-		console.log("Submitted");
 		e.preventDefault();
 		toggleModalPages();
 	});
 
 	$('.modal-section-results .btn').click(function(e){
-		console.log("Closing Modal");
 		toggleModalDisplay();
 	});
 });
