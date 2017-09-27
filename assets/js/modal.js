@@ -16,7 +16,7 @@ $(document).ready(function(){
 		$page1.toggleClass('is-hidden');
 		$page2.toggleClass('is-hidden');
 
-		JFTransformer.getResults()
+		JFTransformer.getResults(JF_Questions)
 			.then(function(answers){
 				updateResults(answers);
 			});
@@ -48,7 +48,7 @@ $(document).ready(function(){
 		$page1.toggleClass('is-hidden');
 		JFTransformer.submitAnswer( $form.serializeArray()[0].value )
 			.then(function(){
-				return JFTransformer.getResults();
+				return JFTransformer.getResults(JF_Questions);
 			})
 			.then(function(answers){
 				updateResults(answers);
@@ -58,8 +58,11 @@ $(document).ready(function(){
 
 	toggleModalDisplay();
 
+	var JF_Questions;
+
 	JFTransformer.getQuestions()
 		.then(function(response){
+			JF_Questions = response;
 			updateQuestions(response);
 			$page1.toggleClass('is-hidden');
 		});

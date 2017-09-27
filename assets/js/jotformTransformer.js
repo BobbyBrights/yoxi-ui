@@ -53,11 +53,38 @@ var JFTransformer = function() {
 		});
 	}
 
-	function getResults() {
+	function mergeOtherAnswers(answers, questions) {
+		return answers.reduce(function(sum, item){
+			var match = questions.options.find(function(question){
+				console.log("MATCH");
+				return question === item.answer;
+			});
+			// console.log(match);
+
+			var other = sum.findIndex(function(answer) {
+				return answer.answer === "Other";
+			});
+
+			if (match) {
+				sum.push(item);
+			} else {
+				if (other >= 0) {
+					sum[other].count++
+				} else {
+					sum.push({'answer': 'Other', 'count': 1});
+				}
+			}
+
+			return sum;
+		}, []);
+	}
+
+	function getResults(questions) {
 		return new Promise(function(resolve, reject){
 			JF.getFormSubmissions(jf_form_id, function(response){
 				response = formatResponse(response);
 				response = groupByAnswer(response);
+				response = mergeOtherAnswers(response, questions);
 				response = includePercents(response);
 				resolve(response);
 			});
@@ -67,7 +94,6 @@ var JFTransformer = function() {
 	function submitAnswer(answer) {
 		return new Promise(function(resolve,reject){
 			JF.createFormSubmission(jf_form_id, { '1': answer }, function(response){
-				console.log(response);
 				resolve(response);
 			});
 		});

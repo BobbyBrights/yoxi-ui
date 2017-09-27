@@ -72,7 +72,7 @@ require('./nav-toggle.js');
 require('./bios.js');
 require('./background.js');
 
-}).call(this,require("Wb8Gej"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/fake_e288f646.js","/")
+}).call(this,require("Wb8Gej"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/fake_4b3de79d.js","/")
 },{"./background.js":1,"./bios.js":2,"./modal.js":5,"./nav-toggle.js":6,"./smoothscroll.js":7,"Wb8Gej":10,"buffer":9}],4:[function(require,module,exports){
 (function (process,global,Buffer,__argument0,__argument1,__argument2,__argument3,__filename,__dirname){
 var JFTransformer = function() {
@@ -130,11 +130,38 @@ var JFTransformer = function() {
 		});
 	}
 
-	function getResults() {
+	function mergeOtherAnswers(answers, questions) {
+		return answers.reduce(function(sum, item){
+			var match = questions.options.find(function(question){
+				console.log("MATCH");
+				return question === item.answer;
+			});
+			// console.log(match);
+
+			var other = sum.findIndex(function(answer) {
+				return answer.answer === "Other";
+			});
+
+			if (match) {
+				sum.push(item);
+			} else {
+				if (other >= 0) {
+					sum[other].count++
+				} else {
+					sum.push({'answer': 'Other', 'count': 1});
+				}
+			}
+
+			return sum;
+		}, []);
+	}
+
+	function getResults(questions) {
 		return new Promise(function(resolve, reject){
 			JF.getFormSubmissions(jf_form_id, function(response){
 				response = formatResponse(response);
 				response = groupByAnswer(response);
+				response = mergeOtherAnswers(response, questions);
 				response = includePercents(response);
 				resolve(response);
 			});
@@ -144,7 +171,6 @@ var JFTransformer = function() {
 	function submitAnswer(answer) {
 		return new Promise(function(resolve,reject){
 			JF.createFormSubmission(jf_form_id, { '1': answer }, function(response){
-				console.log(response);
 				resolve(response);
 			});
 		});
@@ -179,7 +205,7 @@ $(document).ready(function(){
 		$page1.toggleClass('is-hidden');
 		$page2.toggleClass('is-hidden');
 
-		JFTransformer.getResults()
+		JFTransformer.getResults(JF_Questions)
 			.then(function(answers){
 				updateResults(answers);
 			});
@@ -211,7 +237,7 @@ $(document).ready(function(){
 		$page1.toggleClass('is-hidden');
 		JFTransformer.submitAnswer( $form.serializeArray()[0].value )
 			.then(function(){
-				return JFTransformer.getResults();
+				return JFTransformer.getResults(JF_Questions);
 			})
 			.then(function(answers){
 				updateResults(answers);
@@ -221,8 +247,11 @@ $(document).ready(function(){
 
 	toggleModalDisplay();
 
+	var JF_Questions;
+
 	JFTransformer.getQuestions()
 		.then(function(response){
+			JF_Questions = response;
 			updateQuestions(response);
 			$page1.toggleClass('is-hidden');
 		});
