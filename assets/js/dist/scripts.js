@@ -24,7 +24,7 @@ require('./nav-toggle.js');
 require('./bios.js');
 // require('./background.js');
 
-}).call(this,require("Wb8Gej"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/fake_fb9af7f7.js","/")
+}).call(this,require("Wb8Gej"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/fake_96724232.js","/")
 },{"./bios.js":1,"./modal.js":4,"./nav-toggle.js":5,"./smoothscroll.js":6,"Wb8Gej":9,"buffer":8}],3:[function(require,module,exports){
 (function (process,global,Buffer,__argument0,__argument1,__argument2,__argument3,__filename,__dirname){
 var JFTransformer = function() {
@@ -71,6 +71,17 @@ var JFTransformer = function() {
 		});
 	}
 
+	function getQuestions() {
+		return new Promise(function(resolve, reject){
+			JF.getFormQuestions(jf_form_id, function(response){
+				resolve({
+					'question': response['1'].text,
+					'options': response['1'].options.split('|')
+				});
+			});
+		});
+	}
+
 	function getResults() {
 		return new Promise(function(resolve, reject){
 			JF.getFormSubmissions(jf_form_id, function(response){
@@ -82,9 +93,20 @@ var JFTransformer = function() {
 		});
 	}
 
+	function submitAnswer(answer) {
+		return new Promise(function(resolve,reject){
+			JF.createFormSubmission(jf_form_id, { '1': answer }, function(response){
+				console.log(response);
+				resolve(response);
+			});
+		});
+	}
+
 	return {
-		getResults: getResults
-	};
+		getResults: getResults,
+		submitAnswer: submitAnswer,
+		getQuestions: getQuestions,
+	}
 };
 
 module.exports = JFTransformer();
@@ -98,6 +120,7 @@ $(document).ready(function(){
 	$html = $('html');
 	$page1 = $('.modal-section-questions');
 	$page2 = $('.modal-section-results');
+	$form = $('#modal-form');
 
 	function toggleModalDisplay() {
 		$html.toggleClass('modal-open');
@@ -107,7 +130,7 @@ $(document).ready(function(){
 	function toggleModalPages() {
 		$page1.toggleClass('is-hidden');
 		$page2.toggleClass('is-hidden');
-		
+
 		JFTransformer.getResults()
 			.then(function(answers){
 				updateResults(answers);
@@ -128,21 +151,37 @@ $(document).ready(function(){
 		});
 	}
 
+	function updateQuestions(data) {
+		$form.find('[type="radio"]').each(function(i){
+			$(this).val(data.options[i]);
+		})
+	}
+
+	function formSubmitted(e) {
+		e.preventDefault();
+
+		$page1.toggleClass('is-hidden');
+		JFTransformer.submitAnswer( $form.serializeArray()[0].value )
+			.then(function(){
+				return JFTransformer.getResults();
+			})
+			.then(function(answers){
+				updateResults(answers);
+				$page2.toggleClass('is-hidden');
+			});
+	}
+
 	toggleModalDisplay();
 
-	$('[name="modal-question"]').on('change', function(e){
-		e.preventDefault();
-		toggleModalPages();
-	});
+	JFTransformer.getQuestions()
+		.then(function(response){
+			updateQuestions(response);
+			$page1.toggleClass('is-hidden');
+		});
 
-	$('#modal-form').submit(function(e){
-		e.preventDefault();
-		toggleModalPages();
-	});
-
-	$('.modal-section-results .btn').click(function(e){
-		toggleModalDisplay();
-	});
+	$('[type="radio"]').on('change', formSubmitted);
+	$form.submit(formSubmitted);
+	$('.modal-section-results .btn').click(toggleModalDisplay);
 });
 
 
@@ -169,9 +208,10 @@ $links.forEach(function($link){
 (function (process,global,Buffer,__argument0,__argument1,__argument2,__argument3,__filename,__dirname){
 var SmoothScroll = require('smooth-scroll');
 
-var scroll = new SmoothScroll('.site-nav a[href*="#"], .modal-section-results a[href*="#"]',{
-	header: '#site-header'
-});
+var scroll = new SmoothScroll(
+	'.site-nav a[href*="#"], .modal-section-results a[href*="#"]',
+	{ header: '#site-header' }
+);
 
 }).call(this,require("Wb8Gej"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/smoothscroll.js","/")
 },{"Wb8Gej":9,"buffer":8,"smooth-scroll":12}],7:[function(require,module,exports){

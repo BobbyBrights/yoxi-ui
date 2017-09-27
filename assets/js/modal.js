@@ -5,6 +5,7 @@ $(document).ready(function(){
 	$html = $('html');
 	$page1 = $('.modal-section-questions');
 	$page2 = $('.modal-section-results');
+	$form = $('#modal-form');
 
 	function toggleModalDisplay() {
 		$html.toggleClass('modal-open');
@@ -14,7 +15,7 @@ $(document).ready(function(){
 	function toggleModalPages() {
 		$page1.toggleClass('is-hidden');
 		$page2.toggleClass('is-hidden');
-		
+
 		JFTransformer.getResults()
 			.then(function(answers){
 				updateResults(answers);
@@ -35,20 +36,36 @@ $(document).ready(function(){
 		});
 	}
 
+	function updateQuestions(data) {
+		$form.find('[type="radio"]').each(function(i){
+			$(this).val(data.options[i]);
+		})
+	}
+
+	function formSubmitted(e) {
+		e.preventDefault();
+
+		$page1.toggleClass('is-hidden');
+		JFTransformer.submitAnswer( $form.serializeArray()[0].value )
+			.then(function(){
+				return JFTransformer.getResults();
+			})
+			.then(function(answers){
+				updateResults(answers);
+				$page2.toggleClass('is-hidden');
+			});
+	}
+
 	toggleModalDisplay();
 
-	$('[name="modal-question"]').on('change', function(e){
-		e.preventDefault();
-		toggleModalPages();
-	});
+	JFTransformer.getQuestions()
+		.then(function(response){
+			updateQuestions(response);
+			$page1.toggleClass('is-hidden');
+		});
 
-	$('#modal-form').submit(function(e){
-		e.preventDefault();
-		toggleModalPages();
-	});
-
-	$('.modal-section-results .btn').click(function(e){
-		toggleModalDisplay();
-	});
+	$('[type="radio"]').on('change', formSubmitted);
+	$form.submit(formSubmitted);
+	$('.modal-section-results .btn').click(toggleModalDisplay);
 });
 

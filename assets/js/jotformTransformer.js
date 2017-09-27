@@ -42,6 +42,17 @@ var JFTransformer = function() {
 		});
 	}
 
+	function getQuestions() {
+		return new Promise(function(resolve, reject){
+			JF.getFormQuestions(jf_form_id, function(response){
+				resolve({
+					'question': response['1'].text,
+					'options': response['1'].options.split('|')
+				});
+			});
+		});
+	}
+
 	function getResults() {
 		return new Promise(function(resolve, reject){
 			JF.getFormSubmissions(jf_form_id, function(response){
@@ -53,9 +64,20 @@ var JFTransformer = function() {
 		});
 	}
 
+	function submitAnswer(answer) {
+		return new Promise(function(resolve,reject){
+			JF.createFormSubmission(jf_form_id, { '1': answer }, function(response){
+				console.log(response);
+				resolve(response);
+			});
+		});
+	}
+
 	return {
-		getResults: getResults
-	};
+		getResults: getResults,
+		submitAnswer: submitAnswer,
+		getQuestions: getQuestions,
+	}
 };
 
 module.exports = JFTransformer();

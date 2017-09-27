@@ -2,7 +2,7 @@
 <section class="modal is-overlay has-bg-img" style="background-image: url('{{ 'assets/imgs/bg-imgs/Corner_Interests.jpg' }}')">
 	<img class="site-logo is-block is-marginless is-absolute" src="{{ "assets/imgs/Logo.svg" | prepend: site.baseurl }}" alt="{{site.title}} Logo">
 	<div class="modal-container">
-		<section class="modal-section-questions wrapper">
+		<section class="modal-section modal-section-questions is-hidden wrapper">
 			<header class="has-margin-left-large-lg has-margin-bottom-large">
 				<h2 class="is-marginless section-heading">Imagine you have unlimited resources to spend on one challenge,which question below would you pay to answer?</h2>
 			</header>
@@ -20,12 +20,12 @@
 					<input type="radio" name="modal-question" id="question-3" value="3">
 				</label>
 				<div class="input-group">
-					<input type="text" name="question-new" class="input-text input-bordered btn btn-outline is-marginless" placeholder="Or enter your own question here">
+					<input type="text" name="modal-question" class="input-text input-bordered btn btn-outline is-marginless" placeholder="Or enter your own question here">
 					<button class="modal-submit-button input-button btn btn-outline is-color-white">submit</button>
 				</div>
 			</form>
 		</section>
-		<section class="modal-section-results wrapper is-hidden">
+		<section class="modal-section modal-section-results wrapper is-hidden">
 			<div class="modal-results has-margin-left-large-md has-margin-bottom-large">
 
 				<div class="modal-result is-flex-md is-align-center">

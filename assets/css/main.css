@@ -7697,12 +7697,20 @@ button:focus {
 
 .modal {
   display: none;
-  z-index: 999; }
+  z-index: 999;
+  -webkit-transition: all 2s;
+  -o-transition: all 2s;
+  transition: all 2s; }
   .modal-open .modal {
     display: block; }
   .modal label,
   .modal .input-group {
     margin: .5rem 0 !important; }
+
+.modal-section {
+  -webkit-transition: all 2s;
+  -o-transition: all 2s;
+  transition: all 2s; }
 
 .modal-heading {
   font-size: 3rem;
@@ -7912,3 +7920,14 @@ input[type="number"] {
 
 .has-margin-bottom-xl {
   margin-bottom: 18rem; }
+
+.is-transition-all {
+  -webkit-transition: all 0.3s ease-in-out;
+  -o-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out; }
+
+.is-opacity-0 {
+  opacity: 0; }
+
+.is-opacity-1 {
+  opacity: 1; }
